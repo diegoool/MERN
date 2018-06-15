@@ -1,4 +1,4 @@
-MongoDB, Express, React/Redux and Node (MERN)
+MERN
 
 ## Get Started
 
@@ -17,8 +17,7 @@ $ sudo service mongod start
 
 On the command prompt run the following commands:
 ``` 
- $ git clone https://github.com/Bikranshu/express-mongo-react-redux.git
- $ cd express-mongo-react-redux
+
  $ cp .env.example .env (edit it with your secret key and database information)
  $ npm install
  $ npm start
