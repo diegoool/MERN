@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
+import {Link, IndexLink} from 'react-router';
 
 // Import authService
 import * as authService from '../../../services/authService';
@@ -31,7 +32,9 @@ class UserMenu extends Component {
                     </li>
                     <li className="user-footer">
                         <div className="pull-left">
-                            <a href="#" className="btn btn-default btn-flat">Profile</a>
+                        <IndexLink className="btn btn-default btn-flat" to={'/profile'}>
+                            Profile
+                        </IndexLink>
                         </div>
                         <div className="pull-right">
                             <a href="#" className="btn btn-default btn-flat" onClick={this.logOut.bind(this)}>Sign
