@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 import App from './app.component'
-import { getUserDetails, hello } from '../reducers/userReducer.js'
+import { getUserDetails, fetchUsers } from '../reducers/userReducer.js'
 
 const mapDispatchToProps = {
     getUserDetails,
-    hello
+    fetchUsers
 }
 
 const mapStateToProps = (state) => ({
-
-
+    user: state.user.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,24 +1,30 @@
+import cookie from 'react-cookie';
+import jtwDecode from 'jwt-decode';
 
 // -----------------------------
 // Constants
 // -----------------------------
 
-const GET_USER = 'GET_USER'
+const GET_USERS = 'GET_USERS'
+const GET_USER_ACTIVE = 'GET_USER_ACTIVE'
 
 // -----------------------------
 // Actions
 // -----------------------------
 
-export function getUser () {
+export function getUsers (users) {
   return {
-    type: GET_USER
+    type: GET_USERS,
+    payload: users
   }
 }
 
-export const hello = () => {
-  console.log('hello')
+export function getUserActive (userDto) {
+  return {
+    type: GET_USER_ACTIVE,
+    payload: userDto
+  }
 }
-
 
 // ----------------------------
 // Async Functions Calls
@@ -27,30 +33,27 @@ export const hello = () => {
 //  returns a function for lazy evaluation. It is incredibly useful for
 //  creating async actions, especially when combined with redux-thunk!
 
-//
 // Loads user details from Passad.Identity.Api
 // userIdDTOs 'state.customer.customerUsers.users ...its en array!'
 
-export const getUserDetails = () => {
+export const fetchUsers = () => {
   return (dispatch, getState) => {
-      // dispatch(getUser())
-      //  let token = getState().identity.user.access_token
-      fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify(this.state),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
+    fetch(`/api/users`)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        // M.toast({html: 'Task Saved'})
-        // this.setState({title: '', description: ''});
-        // this.fecthTask();
-    })
-    .catch( err => console.log(err))
+      dispatch(getUsers(data))
+    }
+    );
+  }
+}
+
+export const getUserDetails = () => {
+  return (dispatch, getState) => {
+    // const token = cookie.load('token');
+    let token = getState().auth.token
+    let userToken = jtwDecode(token)
+    let userDto = userToken._doc
+    dispatch(getUserActive(userDto))
   }
 }
 
@@ -58,9 +61,16 @@ export const getUserDetails = () => {
 // ACTION HANDLERS
 // ----------------------------
 const ACTION_HANDLERS = {
-  [GET_USER]: (state, action) => {
+  [GET_USERS]: (state, action) => {
     return {
       ...state,
+      users: action.payload
+    }
+  },
+  [GET_USER_ACTIVE]: (state, action) => {
+    return {
+      ...state,
+      user: action.payload
     }
   }
 }
@@ -69,7 +79,8 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  users: null
+  users: null,
+  user: null
 }
 
 export default function userReducer (state = initialState, action) {

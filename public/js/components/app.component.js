@@ -10,26 +10,21 @@ class App extends Component {
 
     static propTypes = {
         // Functions
-        hello: PropTypes.func.isRequired
+        fetchUsers: PropTypes.func,
+        getUserDetails: PropTypes.func,
+
+        user: PropTypes.object
     }
     componentDidMount(){
-        this.fetchUser()
-        this.props.hello()
+        this.props.fetchUsers()
+        this.props.getUserDetails()
     }
     
-    fetchUser(){
-        fetch(`/api/users`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        }
-        );
-    }
     render(){
         return (
             <div className="wrapper">
                 <Header />
-                <Sidebar />
+                <Sidebar user={this.props.user}/>
                 <div className="content-wrapper">
                    {this.props.children}
                 </div>
