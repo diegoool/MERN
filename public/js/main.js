@@ -15,6 +15,10 @@ import App from './components/app.component';
 import NotFoundPage from './components/error/not-found.component';
 import LoginForm from './components/login/login.component';
 import Dashboard from './components/dashboard/dashboard.component';
+import Settings from './components/settings/settings.component';
+import Edit from './components/edit/edit.component';
+import Templates from './components/templates/templates.component';
+import Cms from './components/cms/cms.component';
 import SignUpForm from './components/signup/signup.component';
 import ForgotForm from './components/forgot/forgot.component';
 import store from './store/store';
@@ -43,7 +47,20 @@ render(
             <Route path="/dashboard" component={App}>
                 <IndexRoute component={RequireAuth(Dashboard)} />
             </Route>
-            <Route path="*" component={NotFoundPage} />
+            <Route path="/settings" component={App}>
+                <IndexRoute component={RequireAuth(Settings)} />
+            </Route>
+            <Route path="/edit" component={App}>
+                <IndexRoute component={RequireAuth(Edit)} />
+            </Route>
+            <Route path="/cms" component={App}>
+                <IndexRoute component={RequireAuth(Cms)} />
+            </Route>
+            <Route path="/templates" component={App}>
+                <IndexRoute component={RequireAuth(Templates)} />
+            </Route>
+            {/* if the previous routes are not found, with '*' redirect to Not Found page */}
+            <Route path="*" component={NotFoundPage} /> 
         </Router>
     </Provider>,
     document.getElementById('root-container')
