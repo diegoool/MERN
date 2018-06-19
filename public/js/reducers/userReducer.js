@@ -36,6 +36,10 @@ export function changeProfile (id, value) {
   }
 }
 
+export function saveSettings () {
+  console.log('save save')
+}
+
 // ----------------------------
 // Async Functions Calls
 // ----------------------------
