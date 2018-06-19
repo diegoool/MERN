@@ -37,6 +37,22 @@ var UserSchema = new Schema({
             enum: ['active', 'inactive']
         }],
         default: ['active']
+    },
+    site: {
+        settings: {
+            title: {
+                type: String,
+                default: 'site title'
+            },
+            keywords: {
+                type: String,
+                default: 'keywords'
+            },
+            description: {
+                type: String,
+                default: 'description'
+            }
+        }
     }
 });
 

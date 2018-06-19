@@ -7,6 +7,7 @@ import jtwDecode from 'jwt-decode';
 
 const GET_USERS = 'GET_USERS'
 const GET_USER_ACTIVE = 'GET_USER_ACTIVE'
+const EDIT_PROFILE_INFO = 'EDIT_PROFILE_INFO'
 
 // -----------------------------
 // Actions
@@ -26,15 +27,17 @@ export function getUserActive (userDto) {
   }
 }
 
+export function changeProfileEdit (id, value) {
+  return {
+    type: EDIT_PROFILE_INFO,
+    id: id,
+    payload: value
+  }
+}
+
 // ----------------------------
 // Async Functions Calls
 // ----------------------------
-//  This is a thunk, meaning it is a function that immediately
-//  returns a function for lazy evaluation. It is incredibly useful for
-//  creating async actions, especially when combined with redux-thunk!
-
-// Loads user details from Passad.Identity.Api
-// userIdDTOs 'state.customer.customerUsers.users ...its en array!'
 
 export const fetchUsers = () => {
   return (dispatch, getState) => {
@@ -72,6 +75,33 @@ const ACTION_HANDLERS = {
       ...state,
       user: action.payload
     }
+  },
+  [EDIT_PROFILE_INFO]: (state, action) => {
+    if (action.id === 'first-name'){
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        first_name:action.payload
+      }
+    }
+  } else if (action.id === 'last-name'){
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        last_name: action.payload
+      }
+    }
+  } else if (action.id === 'email'){
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        email: action.payload
+      }
+    }
+  }
   }
 }
 
@@ -80,7 +110,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = {
   users: null,
-  user: null
+  user: {}
 }
 
 export default function userReducer (state = initialState, action) {
