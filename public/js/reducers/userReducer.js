@@ -1,5 +1,6 @@
 import cookie from 'react-cookie';
 import jtwDecode from 'jwt-decode';
+import {browserHistory} from 'react-router';
 
 // -----------------------------
 // Constants
@@ -27,7 +28,7 @@ export function getUserActive (userDto) {
   }
 }
 
-export function changeProfileEdit (id, value) {
+export function changeProfile (id, value) {
   return {
     type: EDIT_PROFILE_INFO,
     id: id,
@@ -48,6 +49,32 @@ export const fetchUsers = () => {
     }
     );
   }
+}
+
+
+export const saveProfile = () => {
+  return (dispatch, getState) => {
+    let token = getState().auth.token
+    let userToken = jtwDecode(token)
+    let id = userToken._doc._id
+    console.log(JSON.stringify(getState().user.user))
+      fetch(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(getState().user.user),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      }
+      )
+      .catch(() => {
+          console.log('Error')
+      });
+  };
 }
 
 export const getUserDetails = () => {

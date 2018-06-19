@@ -4,19 +4,26 @@ import PropTypes from 'prop-types';
 class ProfilePage extends Component {
     static propTypes = {
         user: PropTypes.object,
-        changeProfileEdit: PropTypes.func
+        changeProfile: PropTypes.func,
+        saveProfile: PropTypes.func
     }
     
     constructor(props) {
         super(props);
     
         this.onChangeProfileEdit = this.onChangeProfileEdit.bind(this);
+        this.onSaveProfile = this.onSaveProfile.bind(this);
     
       }
     
     onChangeProfileEdit(e) {
-    console.log(e.target)
-    this.props.changeProfileEdit(e.target.id, e.target.value);
+    e.preventDefault()
+    this.props.changeProfile(e.target.id, e.target.value);
+    }
+
+    onSaveProfile(e){
+    e.preventDefault()
+    this.props.saveProfile()
     }
     
     render(){
@@ -27,7 +34,7 @@ class ProfilePage extends Component {
         return (
             <div>
                 <h4>{fullName}</h4>
-                <form>
+                <form id='form-edit-profile' onSubmit={this.onSaveProfile}>
                 <table className="table table-bordered">
                     <thead>
                         <tr>
@@ -67,10 +74,12 @@ class ProfilePage extends Component {
                             </th>
 
                         </tr>
-                        
                     </tbody>
                 </table>
                 </form> 
+                <button className="btn btn-primary" style={{margin: '4px'}} type="submit" form='form-edit-profile'>
+                    <i className="material-icons">Save</i>
+                </button>
             </div>
         );
     }

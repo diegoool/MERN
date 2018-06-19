@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-import { changeProfileEdit } from '../../reducers/userReducer'
+import { changeProfile, saveProfile } from '../../reducers/userReducer'
 
 // Import custom components
 import Title from './title.component';
@@ -12,7 +12,8 @@ class Profile extends Component {
 
     static propTypes = {
         user: PropTypes.object,
-        changeProfileEdit: PropTypes.func
+        changeProfile: PropTypes.func,
+        saveProfile: PropTypes.func
     }
 
     render(){
@@ -21,7 +22,7 @@ class Profile extends Component {
                 <Title />
 
                 <section className="content">
-                   <ProfilePage user={this.props.user} changeProfileEdit={this.props.changeProfileEdit}/>
+                   <ProfilePage user={this.props.user} changeProfile={this.props.changeProfile} saveProfile={this.props.saveProfile}/>
                 </section>
 
             </div>
@@ -30,7 +31,8 @@ class Profile extends Component {
 }
 
 const mapDispatchToProps = {
-    changeProfileEdit
+    changeProfile,
+    saveProfile
 }
 
 const mapStateToProps = (state) => ({
