@@ -9,6 +9,7 @@ import {browserHistory} from 'react-router';
 const GET_USERS = 'GET_USERS'
 const GET_USER_ACTIVE = 'GET_USER_ACTIVE'
 const EDIT_PROFILE_INFO = 'EDIT_PROFILE_INFO'
+const EDIT_SETTINGS = 'EDIT_SETTINGS'
 
 // -----------------------------
 // Actions
@@ -36,8 +37,12 @@ export function changeProfile (id, value) {
   }
 }
 
-export function saveSettings () {
-  console.log('save save')
+export function changeSettings (id, value) {
+  return {
+    type: EDIT_SETTINGS,
+    id: id,
+    payload: value
+  }
 }
 
 // ----------------------------
@@ -62,6 +67,30 @@ export const saveProfile = () => {
     let userToken = jtwDecode(token)
     let id = userToken._doc._id
     console.log(JSON.stringify(getState().user.user))
+      fetch(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(getState().user.user),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      }
+      )
+      .catch(() => {
+          console.log('Error')
+      });
+  };
+}
+
+export const saveSettings = () => {
+  return (dispatch, getState) => {
+    let token = getState().auth.token
+    let userToken = jtwDecode(token)
+    let id = userToken._doc._id
       fetch(`/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify(getState().user.user),
@@ -133,7 +162,48 @@ const ACTION_HANDLERS = {
       }
     }
   }
-  }
+  },
+  [EDIT_SETTINGS]: (state, action) => {
+    if (action.id === 'site-title'){
+      return {
+        ...state,
+        user: {
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              title: action.payload
+            }
+          }
+        }
+      }
+    } else if (action.id === 'site-keywords'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              keywords: action.payload
+            }
+          }
+        }
+      }
+    } else if (action.id === 'site-description'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              description: action.payload
+            }
+          }
+        }
+      }
+    }
+    }
 }
 
 // ------------------------------------
@@ -141,7 +211,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = {
   users: null,
-  user: {}
+  user: null
 }
 
 export default function userReducer (state = initialState, action) {

@@ -42,15 +42,15 @@ var UserSchema = new Schema({
         settings: {
             title: {
                 type: String,
-                default: 'site title'
+                required: 'site title'
             },
             keywords: {
                 type: String,
-                default: 'keywords'
+                required: 'keywords'
             },
             description: {
                 type: String,
-                default: 'description'
+                required: 'description'
             }
         }
     }
