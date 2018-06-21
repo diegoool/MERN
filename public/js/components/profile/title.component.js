@@ -6,7 +6,7 @@ class Title extends Component {
             <section className="content-header">
                 <h1>Profile</h1>
                 <ol className="breadcrumb">
-                    <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="#/dashboard"><i className="fa fa-dashboard"></i> Home</a></li>
                     <li className="active">Profile</li>
                 </ol>
             </section>

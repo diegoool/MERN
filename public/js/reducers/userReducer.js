@@ -10,6 +10,7 @@ const GET_USERS = 'GET_USERS'
 const GET_USER_ACTIVE = 'GET_USER_ACTIVE'
 const EDIT_PROFILE_INFO = 'EDIT_PROFILE_INFO'
 const EDIT_SETTINGS = 'EDIT_SETTINGS'
+const EDIT_EDIT_PAGE = 'EDIT_EDIT_PAGE'
 
 // -----------------------------
 // Actions
@@ -40,6 +41,14 @@ export function changeProfile (id, value) {
 export function changeSettings (id, value) {
   return {
     type: EDIT_SETTINGS,
+    id: id,
+    payload: value
+  }
+}
+
+export function changeEdit (id, value) {
+  return {
+    type: EDIT_EDIT_PAGE,
     id: id,
     payload: value
   }
@@ -110,6 +119,30 @@ export const saveSettings = () => {
   };
 }
 
+export const saveEdit = () => {
+  return (dispatch, getState) => {
+    let token = getState().auth.token
+    let userToken = jtwDecode(token)
+    let id = userToken._doc._id
+      fetch(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(getState().user.user),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      }
+      )
+      .catch(() => {
+          console.log('Error')
+      });
+  };
+}
+
 export const getUserDetails = () => {
   return (dispatch, getState) => {
     // const token = cookie.load('token');
@@ -138,32 +171,73 @@ const ACTION_HANDLERS = {
   },
   [EDIT_PROFILE_INFO]: (state, action) => {
     if (action.id === 'first-name'){
-    return {
-      ...state,
-      user: {
-        ...state.user,
-        first_name:action.payload
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          first_name:action.payload
+        }
+      }
+    } else if (action.id === 'last-name'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          last_name: action.payload
+        }
+      }
+    } else if (action.id === 'email'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          email: action.payload
+        }
       }
     }
-  } else if (action.id === 'last-name'){
-    return {
-      ...state,
-      user: {
-        ...state.user,
-        last_name: action.payload
-      }
-    }
-  } else if (action.id === 'email'){
-    return {
-      ...state,
-      user: {
-        ...state.user,
-        email: action.payload
-      }
-    }
-  }
   },
   [EDIT_SETTINGS]: (state, action) => {
+    if (action.id === 'site-title'){
+      return {
+        ...state,
+        user: {
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              title: action.payload
+            }
+          }
+        }
+      }
+    } else if (action.id === 'site-keywords'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              keywords: action.payload
+            }
+          }
+        }
+      }
+    } else if (action.id === 'site-description'){
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          site:{
+            settings:{
+              ...state.user.site.settings,
+              description: action.payload
+            }
+          }
+        }
+      }
+    }
+  },
+  [EDIT_EDIT_PAGE]: (state, action) => {
     if (action.id === 'site-title'){
       return {
         ...state,

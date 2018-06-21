@@ -14,7 +14,7 @@ class SettingsPage extends Component {
         this.onChangeSettings = this.onChangeSettings.bind(this);
         this.onSaveSettings = this.onSaveSettings.bind(this);
     
-      }
+    }
     
     onChangeSettings(e) {
     e.preventDefault()
