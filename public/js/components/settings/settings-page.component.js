@@ -13,7 +13,7 @@ class SettingsPage extends Component {
         // this.onChangeSettingsEdit = this.onChangeSettingsEdit.bind(this);
         this.onSaveSettings = this.onSaveSettings.bind(this);
     
-      }
+    }
     
     // onChangeSettingsEdit(e) {
     // e.preventDefault()
