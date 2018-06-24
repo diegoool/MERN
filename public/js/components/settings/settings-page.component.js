@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 
 class SettingsPage extends Component {
     static propTypes = {
+        user: PropTypes.object,
+        changeSettings: PropTypes.func,
         saveSettings: PropTypes.func
-
     }
     
     constructor(props) {
         super(props);
     
-        // this.onChangeSettingsEdit = this.onChangeSettingsEdit.bind(this);
+        this.onChangeSettings = this.onChangeSettings.bind(this);
         this.onSaveSettings = this.onSaveSettings.bind(this);
     
     }
     
-    // onChangeSettingsEdit(e) {
-    // e.preventDefault()
-    // this.props.changeProfile(e.target.id, e.target.value);
-    // }
+    onChangeSettings(e) {
+        e.preventDefault()
+        this.props.changeSettings(e.target.id, e.target.value);
+    }
 
     onSaveSettings(e){
     e.preventDefault()
@@ -41,7 +42,8 @@ class SettingsPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue='default'
+                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'noTitle'}
+                                        onChange={this.onChangeSettings}
                                         id="site-title"
                                         className="form-control"
                                         />
@@ -58,7 +60,8 @@ class SettingsPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue='default'
+                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'noTitle'}
+                                        onChange={this.onChangeSettings}
                                         id="site-keywords"
                                         className="form-control"
                                         />
@@ -75,7 +78,8 @@ class SettingsPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue='default'
+                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.description : 'noDescription'}
+                                        onChange={this.onChangeSettings}
                                         id="site-description"
                                         className="form-control"
                                         />

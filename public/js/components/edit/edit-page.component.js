@@ -24,14 +24,14 @@ class EditPage extends Component {
         onSaveEdit(e){
         e.preventDefault()
         this.props.saveEdit()
-        }
+        }ß
 
     render(){
         return (
             <div>
                 <form id='form-edit' onSubmit={this.onSaveEdit}>
                     <h4>Text format</h4>
-                    <hr style={{'border-color': 'lightgrey', 'width':'100%'}} />    
+                    <hr style={{'borderColor': 'lightgrey', 'width':'100%'}} />    
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>

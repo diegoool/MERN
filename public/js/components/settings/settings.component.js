@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-import { saveSettings } from '../../reducers/userReducer'
+import { changeSettings, saveSettings } from '../../reducers/userReducer'
 
 // Import custom components
 import Title from './title.component';
@@ -11,6 +11,8 @@ import SettingsPage from './settings-page.component';
 class Settings extends Component {
 
     static propTypes = {
+        user: PropTypes.object,
+        changeSettings: PropTypes.func,
         saveSettings: PropTypes.func
     }
 
@@ -20,7 +22,11 @@ class Settings extends Component {
                 <Title />
 
                 <section className="content">
-                   <SettingsPage saveSettings={this.props.saveSettings} />
+                <SettingsPage
+                    user={this.props.user}
+                    changeSettings={this.props.changeSettings}
+                    saveSettings={this.props.saveSettings}
+                />
                 </section>
 
             </div>
@@ -29,10 +35,12 @@ class Settings extends Component {
 }
 
 const mapDispatchToProps = {
-    saveSettings
+    saveSettings,
+    changeSettings
 }
 
 const mapStateToProps = (state) => ({
+    user: state.user.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
