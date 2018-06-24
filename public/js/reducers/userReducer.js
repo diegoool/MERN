@@ -202,6 +202,7 @@ const ACTION_HANDLERS = {
         return {
           ...state,
           user: {
+            ...state.user,
             site:{
               ...state.user.site,
               settings:{
@@ -216,6 +217,7 @@ const ACTION_HANDLERS = {
         return {
           ...state,
           user: {
+            ...state.user,
             site:{
               ...state.user.site,
               settings:{
@@ -225,10 +227,12 @@ const ACTION_HANDLERS = {
             }
           }
         }
+        
       case 'site-description':
         return {
           ...state,
           user: {
+            ...state.user,
             site:{
               ...state.user.site,
               settings:{
