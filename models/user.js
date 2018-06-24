@@ -62,9 +62,9 @@ var UserSchema = new Schema({
                     type: String,
                     default: '#000'
                 },
-                underline: {
+                lineheight: {
                     type: String,
-                    default: 'false'
+                    default: 'normal'
                 }
             },
             h1: {

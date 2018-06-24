@@ -24,7 +24,7 @@ class EditPage extends Component {
         onSaveEdit(e){
         e.preventDefault()
         this.props.saveEdit()
-        }ß
+        }
 
     render(){
         return (
@@ -44,7 +44,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'fonts'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.text.font : 'fonts'}
                                         onChange={this.onChangeEdit}
                                         id="text-fonts"
                                         className="form-control"
@@ -53,7 +53,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'size'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.text.size: 'size'}
                                         onChange={this.onChangeEdit}
                                         id="text-size"
                                         className="form-control"
@@ -72,7 +72,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'noKeywords'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.text.color : 'color'}
                                         onChange={this.onChangeEdit}
                                         id="text-color"
                                         className="form-control"
@@ -81,7 +81,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'noKeywords'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.text.lineheight : 'lineHeight'}
                                         onChange={this.onChangeEdit}
                                         id="text-line-spacing"
                                         className="form-control"
@@ -106,7 +106,7 @@ class EditPage extends Component {
                                 <td colSpan="2">
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'fonts'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.font : 'fonts'}
                                         onChange={this.onChangeEdit}
                                         id="title-h1-fonts"
                                         className="form-control"
@@ -115,7 +115,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'size'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.size : 'size'}
                                         onChange={this.onChangeEdit}
                                         id="title-h1-size"
                                         className="form-control"
@@ -124,7 +124,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'color'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.color : 'color'}
                                         onChange={this.onChangeEdit}
                                         id="title-h1-color"
                                         className="form-control"
@@ -145,7 +145,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'underline'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.underline : 'underline'}
                                         onChange={this.onChangeEdit}
                                         id="title-h1-underline"
                                         className="form-control"
@@ -154,16 +154,16 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'bold'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.bold : 'bold'}
                                         onChange={this.onChangeEdit}
-                                        id="text-bold"
+                                        id="tetitlext-h1-bold"
                                         className="form-control"
                                     />
                                 </td>
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'cursiva'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.cursiva : 'cursiva'}
                                         onChange={this.onChangeEdit}
                                         id="title-h1-cursiva"
                                         className="form-control"
@@ -172,9 +172,9 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'uppercase'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h1.uppercase : 'uppercase'}
                                         onChange={this.onChangeEdit}
-                                        id="text-line-uppercase"
+                                        id="title-h1-uppercase"
                                         className="form-control"
                                     />
                                 </td>
@@ -195,7 +195,7 @@ class EditPage extends Component {
                                 <td colSpan="2">
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'fonts'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.font : 'fonts'}
                                         onChange={this.onChangeEdit}
                                         id="title-h2-fonts"
                                         className="form-control"
@@ -204,7 +204,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'size'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.size : 'size'}
                                         onChange={this.onChangeEdit}
                                         id="title-h2-size"
                                         className="form-control"
@@ -213,7 +213,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'color'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.color : 'color'}
                                         onChange={this.onChangeEdit}
                                         id="title-h2-color"
                                         className="form-control"
@@ -234,7 +234,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'underline'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.underline : 'underline'}
                                         onChange={this.onChangeEdit}
                                         id="title-h2-underline"
                                         className="form-control"
@@ -243,16 +243,16 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'bold'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.bold : 'bold'}
                                         onChange={this.onChangeEdit}
-                                        id="text-bold"
+                                        id="tetitlext-h2-bold"
                                         className="form-control"
                                     />
                                 </td>
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'cursiva'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.cursiva : 'cursiva'}
                                         onChange={this.onChangeEdit}
                                         id="title-h2-cursiva"
                                         className="form-control"
@@ -261,9 +261,9 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'uppercase'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h2.uppercase : 'uppercase'}
                                         onChange={this.onChangeEdit}
-                                        id="text-line-uppercase"
+                                        id="title-h2-uppercase"
                                         className="form-control"
                                     />
                                 </td>
@@ -284,7 +284,7 @@ class EditPage extends Component {
                                 <td colSpan="2">
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'fonts'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.font : 'fonts'}
                                         onChange={this.onChangeEdit}
                                         id="title-h3-fonts"
                                         className="form-control"
@@ -293,7 +293,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'size'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.size : 'size'}
                                         onChange={this.onChangeEdit}
                                         id="title-h3-size"
                                         className="form-control"
@@ -302,7 +302,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'color'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.color : 'color'}
                                         onChange={this.onChangeEdit}
                                         id="title-h3-color"
                                         className="form-control"
@@ -323,7 +323,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'underline'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.underline : 'underline'}
                                         onChange={this.onChangeEdit}
                                         id="title-h3-underline"
                                         className="form-control"
@@ -332,16 +332,16 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'bold'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.bold : 'bold'}
                                         onChange={this.onChangeEdit}
-                                        id="text-bold"
+                                        id="tetitlext-h3-bold"
                                         className="form-control"
                                     />
                                 </td>
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'cursiva'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.cursiva : 'cursiva'}
                                         onChange={this.onChangeEdit}
                                         id="title-h3-cursiva"
                                         className="form-control"
@@ -350,9 +350,9 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.keywords : 'uppercase'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.h3.uppercase : 'uppercase'}
                                         onChange={this.onChangeEdit}
-                                        id="text-line-uppercase"
+                                        id="title-h3-uppercase"
                                         className="form-control"
                                     />
                                 </td>
@@ -378,7 +378,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'size'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.size : 'size'}
                                         onChange={this.onChangeEdit}
                                         id="link-size"
                                         className="form-control"
@@ -387,7 +387,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'color'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.color : 'color'}
                                         onChange={this.onChangeEdit}
                                         id="link-color"
                                         className="form-control"
@@ -396,7 +396,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'color:hover'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.colorHover : 'color:hover'}
                                         onChange={this.onChangeEdit}
                                         id="link-color-hover"
                                         className="form-control"
@@ -405,7 +405,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'cursiva'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.cursiva : 'cursiva'}
                                         onChange={this.onChangeEdit}
                                         id="link-cursiva"
                                         className="form-control"
@@ -414,7 +414,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'bold'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.bold : 'bold'}
                                         onChange={this.onChangeEdit}
                                         id="link-bold"
                                         className="form-control"
@@ -423,7 +423,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'underline'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.underline : 'underline'}
                                         onChange={this.onChangeEdit}
                                         id="link-underline"
                                         className="form-control"
@@ -432,7 +432,7 @@ class EditPage extends Component {
                                 <td>
                                     <input
                                         type="text"
-                                        defaultValue={this.props.user !== null ? this.props.user.site.settings.title : 'uppercase'}
+                                        defaultValue={this.props.user !== null ? this.props.user.site.formatContent.link.uppercase : 'uppercase'}
                                         onChange={this.onChangeEdit}
                                         id="link-uppercase"
                                         className="form-control"
