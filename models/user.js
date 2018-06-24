@@ -30,14 +30,8 @@ var UserSchema = new Schema({
     updated_at: {
         type: Date,
         default: Date.now
-    },
-    status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
-    },
+    }
+    ,
     site: {
         settings: {
             title: {
@@ -52,8 +46,9 @@ var UserSchema = new Schema({
                 type: String,
                 default: 'My site description'
             }
-        },
-        formatContent:{
+        }
+        ,
+        formatContent: {
             text: {
                 font: {
                     type: String,
@@ -177,7 +172,7 @@ var UserSchema = new Schema({
                 },
                 colorHover: {
                     type: String,
-                    default: '#383838'
+                    default: 'grey'
                 },
                 underline: {
                     type: String,
@@ -185,7 +180,7 @@ var UserSchema = new Schema({
                 },
                 bold: {
                     type: String,
-                    default: 'true'
+                    default: 'false'
                 },
                 cursiva: {
                     type: String,
@@ -196,8 +191,14 @@ var UserSchema = new Schema({
                     default: 'false'
                 }
             }
-
         }
+    }
+    ,status: {
+        type: [{
+            type: String,
+            enum: ['active', 'inactive']
+        }],
+        default: ['active']
     }
 });
 
