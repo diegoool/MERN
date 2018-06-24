@@ -42,7 +42,7 @@ var UserSchema = new Schema({
         settings: {
             title: {
                 type: String,
-                default: 'site title'
+                default: 'My site title'
             },
             keywords: {
                 type: String,
@@ -50,8 +50,153 @@ var UserSchema = new Schema({
             },
             description: {
                 type: String,
-                default: 'description'
+                default: 'My site description'
             }
+        },
+        formatContent:{
+            text: {
+                font: {
+                    type: String,
+                    default: 'Arial, \'Helvetica Neue\', Helvetica, sans-serif'
+                },
+                size: {
+                    type: String,
+                    default: '1em'
+                },
+                color: {
+                    type: String,
+                    default: '#000'
+                },
+                underline: {
+                    type: String,
+                    default: 'false'
+                }
+            },
+            h1: {
+                font: {
+                    type: String,
+                    default: 'Arial, \'Helvetica Neue\', Helvetica, sans-serif'
+                },
+                size: {
+                    type: String,
+                    default: '2em'
+                },
+                color: {
+                    type: String,
+                    default: '#000'
+                },
+                underline: {
+                    type: String,
+                    default: 'false'
+                },
+                bold: {
+                    type: String,
+                    default: 'false'
+                },
+                cursiva: {
+                    type: String,
+                    default: 'false'
+                },
+                uppercase: {
+                    type: String,
+                    default: 'false'
+                }
+            },
+            h2: {
+                font: {
+                    type: String,
+                    default: 'Arial, \'Helvetica Neue\', Helvetica, sans-serif'
+                },
+                size: {
+                    type: String,
+                    default: '1.5em'
+                },
+                color: {
+                    type: String,
+                    default: '#000'
+                },
+                underline: {
+                    type: String,
+                    default: 'false'
+                },
+                bold: {
+                    type: String,
+                    default: 'false'
+                },
+                cursiva: {
+                    type: String,
+                    default: 'false'
+                },
+                uppercase: {
+                    type: String,
+                    default: 'false'
+                }
+            },
+            h3: {
+                font: {
+                    type: String,
+                    default: 'Arial, \'Helvetica Neue\', Helvetica, sans-serif'
+                },
+                size: {
+                    type: String,
+                    default: '1.2em'
+                },
+                color: {
+                    type: String,
+                    default: '#000'
+                },
+                underline: {
+                    type: String,
+                    default: 'false'
+                },
+                bold: {
+                    type: String,
+                    default: 'false'
+                },
+                cursiva: {
+                    type: String,
+                    default: 'false'
+                },
+                uppercase: {
+                    type: String,
+                    default: 'false'
+                }
+            },
+            link: {
+                font: {
+                    type: String,
+                    default: 'Arial, \'Helvetica Neue\', Helvetica, sans-serif'
+                },
+                size: {
+                    type: String,
+                    default: '1em'
+                },
+                color: {
+                    type: String,
+                    default: '#000'
+                },
+                colorHover: {
+                    type: String,
+                    default: '#383838'
+                },
+                underline: {
+                    type: String,
+                    default: 'false'
+                },
+                bold: {
+                    type: String,
+                    default: 'true'
+                },
+                cursiva: {
+                    type: String,
+                    default: 'false'
+                },
+                uppercase: {
+                    type: String,
+                    default: 'false'
+                }
+            }
+
         }
     }
 });
