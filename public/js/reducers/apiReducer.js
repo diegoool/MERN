@@ -17,6 +17,11 @@ export default function (state, action) {
     let newState;
 
     switch (action.type) {
+        case ActionType.GET_USER_DETAILS:
+            newState = _.cloneDeep(state);
+            newState.isRequesting = true;
+            newState.numberOfRequests++;
+            return newState;
         case ActionType.API_REQUEST:
             newState = _.cloneDeep(state);
             newState.isRequesting = true;

@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
 import {Link, IndexLink} from 'react-router';
+import PropTypes from 'prop-types';
 
 // Import custom components
 import UserPanel from './user-panel.component';
 import Search from './search.component';
 
 class Sidebar extends Component {
+
+    static propTypes = {
+        //Incoming
+        user: PropTypes.object
+    }
     render() {
         return (
             <aside className="main-sidebar">
                 <section className="sidebar">
 
-                    <UserPanel/>
+                    <UserPanel user={this.props.user}/>
 
                     <Search/>
 

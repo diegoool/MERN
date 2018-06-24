@@ -25,7 +25,8 @@ router.route('/users')
      * HTTP GET http://localhost:3000/api/users
      * @return list of users in JSON format
      */
-    .get(isAuthenticated, function (req, res) {
+    .get( function (req, res) {
+    //  .get(isAuthenticated, function (req, res) {
        User.findAll(req, res);
     });
 
@@ -43,7 +44,8 @@ router.route('/users/:id')
      * HTTP GET http://localhost:3000/api/users/:id
      * @return list of users in JSON format
      */
-    .get(isAuthenticated, function (req, res) {
+    .get( function (req, res) {
+    // .get(isAuthenticated, function (req, res) {
         User.findById(req, res);
     })
 
@@ -53,7 +55,8 @@ router.route('/users/:id')
      * HTTP PUT http://localhost:3000/api/users/:id
      * @return list of users in JSON format
      */
-    .put(isAuthenticated, function (req, res) {
+    .put( function (req, res) {
+    // .put(isAuthenticated, function (req, res) {
        User.update(req, res);
     })
 
@@ -63,7 +66,8 @@ router.route('/users/:id')
      * HTTP DELETE http://localhost:3000/api/users/:id
      * @return list of users in JSON format
      */
-    .delete(isAuthenticated, function (req, res) {
+    .delete( function (req, res) {
+    // .delete(isAuthenticated, function (req, res) {
        User.delete(req, res);
     });
 

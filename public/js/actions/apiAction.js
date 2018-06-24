@@ -12,6 +12,12 @@ export function apiRequest() {
     }
 }
 
+export function apiGetUserRequest() {
+    return {
+        type: ActionType.GET_USER_DETAILS
+    }
+}
+
 // Everytime a response is received, this action gets called
 export function apiResponse() {
     return {
