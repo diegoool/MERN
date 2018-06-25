@@ -51,6 +51,30 @@ export const createNewSite = (title, ownerId) => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        dispatch(fetchSites())
+      }
+      )
+      .catch(() => {
+          console.log('Error')
+      });
+  };
+}
+
+export const deleteSite = (id) => {
+  return (dispatch, getState) => {
+    let token = getState().auth.token
+    let userToken = jtwDecode(token)
+      fetch(`/api/sites/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        dispatch(fetchSites())
       }
       )
       .catch(() => {

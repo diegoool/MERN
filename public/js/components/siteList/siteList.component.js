@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-import { fetchSites } from '../../reducers/siteReducer'
+import { fetchSites, deleteSite } from '../../reducers/siteReducer'
 
 
 class SiteList extends Component {
 
     static propTypes = {
         fetchSites: PropTypes.func,
+        deleteSite: PropTypes.func,
         sites: PropTypes.array
 
     }
+
+    constructor(props) {
+        super(props);
+        this.onDeleteSite = this.onDeleteSite.bind(this);
+    }
+
     componentDidMount(){
         this.props.fetchSites()
     }
 
+    onDeleteSite(event){
+        let idCurrent = event.target.id
+        this.props.deleteSite(idCurrent)
+    }
 
     render(){
         let sitesList = null
@@ -23,7 +34,7 @@ class SiteList extends Component {
         if (this.props.sites !== null && this.props.sites.length !== 0) {
             sitesList = this.props.sites.map((site, index) => {
               return (
-                    <li key={index} className="list-group-item"><strong>{site.siteName}</strong></li>
+                    <li key={index} className="list-group-item"><strong>{site.siteName}</strong> <button id={site._id} onClick={this.onDeleteSite}></button></li>
               )
             })
           } else {
@@ -45,7 +56,8 @@ class SiteList extends Component {
 }
 
 const mapDispatchToProps = {
-    fetchSites
+    fetchSites,
+    deleteSite
 }
 
 const mapStateToProps = (state) => ({

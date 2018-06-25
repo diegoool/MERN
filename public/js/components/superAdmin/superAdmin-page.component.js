@@ -16,9 +16,8 @@ class SuperAdminPage extends Component {
         event.preventDefault()
         let newSiteTitle = event.currentTarget['new-site-title'].value
         let newSiteOwnerId = event.currentTarget['new-site-owner-id'].value
-console.log(newSiteTitle)
-console.log(newSiteOwnerId)
-        //this.props.createNewSite(newSiteTitle, newSiteOwnerId)
+
+        this.props.createNewSite(newSiteTitle, newSiteOwnerId)
     }
 
     render(){
