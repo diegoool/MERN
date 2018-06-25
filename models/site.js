@@ -6,8 +6,7 @@ mongoose.Promise = require('bluebird');
 
 var SiteSchema = new Schema({
     siteName: {
-        type: String,
-        required: 'Name of the site'
+        type: String
     },
     ownerId: {
         type: String

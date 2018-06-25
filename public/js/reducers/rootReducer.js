@@ -6,6 +6,7 @@ import authReducer from './authReducer';
 import crudReducer from './crudReducer';
 import apiReducer from './apiReducer';
 import userReducer from './userReducer';
+import siteReducer from './siteReducer';
 import flashMessageReducer from './flashMessageReducer';
 import { reducer as formReducer } from 'redux-form';
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     form: formReducer,  // ← redux-form
     flash: flashMessageReducer,
     routing: routerReducer,
-    user: userReducer
+    user: userReducer,
+    site: siteReducer
 });
 
 export default rootReducer;

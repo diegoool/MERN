@@ -22,6 +22,7 @@ import Cms from './components/cms/cms.component';
 import Profile from './components/profile/profile.component';
 import SignUpForm from './components/signup/signup.component';
 import ForgotForm from './components/forgot/forgot.component';
+import SuperAdmin from './components/superAdmin/superAdmin.component';
 import store from './store/store';
 
 /**
@@ -62,6 +63,9 @@ render(
             </Route>
             <Route path="/profile" component={App}>
                 <IndexRoute component={RequireAuth(Profile)} />
+            </Route>
+            <Route path="/superadmin" component={App}>
+                <IndexRoute component={RequireAuth(SuperAdmin)} />
             </Route>
             {/* if the previous routes are not found, with '*' redirect to Not Found page */}
             <Route path="*" component={NotFoundPage} /> 

@@ -48,6 +48,11 @@ class Sidebar extends Component {
                                 <i className="fa fa-cog"></i><span>Settings</span>
                             </IndexLink>
                         </li>
+                        <li>
+                            <IndexLink to={'/superadmin'} >
+                                <i className="fa fa-rocket"></i><span>Super Admin</span>
+                            </IndexLink>
+                        </li>
                     </ul>
                 </section>
             </aside>
