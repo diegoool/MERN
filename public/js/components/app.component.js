@@ -11,12 +11,15 @@ class App extends Component {
     static propTypes = {
         // Functions
         fetchUsers: PropTypes.func,
+        fetchSites: PropTypes.func,
         getUserDetails: PropTypes.func,
 
+        sites: PropTypes.array,
         user: PropTypes.object
     }
     componentDidMount(){
         this.props.fetchUsers()
+        this.props.fetchSites()
         this.props.getUserDetails()
     }
     
@@ -24,7 +27,7 @@ class App extends Component {
         return (
             <div className="wrapper">
                 <Header />
-                <Sidebar user={this.props.user}/>
+                <Sidebar user={this.props.user} sites={this.props.sites} />
                 <div className="content-wrapper">
                    {this.props.children}
                 </div>

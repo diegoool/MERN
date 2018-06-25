@@ -2,25 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-import { fetchSites, deleteSite } from '../../reducers/siteReducer'
+import { deleteSite } from '../../reducers/siteReducer'
 
 
 class SiteList extends Component {
 
     static propTypes = {
-        fetchSites: PropTypes.func,
-        deleteSite: PropTypes.func,
-        sites: PropTypes.array
-
+        deleteSite: PropTypes.func
     }
 
     constructor(props) {
         super(props);
         this.onDeleteSite = this.onDeleteSite.bind(this);
-    }
-
-    componentDidMount(){
-        this.props.fetchSites()
     }
 
     onDeleteSite(event){
@@ -56,7 +49,6 @@ class SiteList extends Component {
 }
 
 const mapDispatchToProps = {
-    fetchSites,
     deleteSite
 }
 

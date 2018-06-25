@@ -75,7 +75,6 @@ export const saveProfile = () => {
     let token = getState().auth.token
     let userToken = jtwDecode(token)
     let id = userToken._doc._id
-    console.log(JSON.stringify(getState().user.user))
       fetch(`/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify(getState().user.user),

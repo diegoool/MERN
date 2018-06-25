@@ -10,9 +10,17 @@ class Sidebar extends Component {
 
     static propTypes = {
         //Incoming
-        user: PropTypes.object
+        user: PropTypes.object,
+        sites: PropTypes.array
     }
     render() {
+        var allSite = null
+
+        if (this.props.sites !== null && this.props.sites.length !== 0) {
+            allSite = this.props.sites.map((site,i) => {
+            return <option key={i} value={site._id} >{site.siteName}</option>
+          })
+        }
         return (
             <aside className="main-sidebar">
                 <section className="sidebar">
@@ -53,6 +61,13 @@ class Sidebar extends Component {
                                 <i className="fa fa-rocket"></i><span>Super Admin</span>
                             </IndexLink>
                         </li>
+                        { this.props.sites !== 0 &&
+                            <li style={{'textAlign': '-webkit-center', 'marginTop':'10px' }} >
+                                <select id='select-site' className="form-control" style={{width:'80%'}}>
+                                    {allSite}
+                                </select>
+                            </li>
+                        }
                     </ul>
                 </section>
             </aside>
