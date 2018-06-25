@@ -14,7 +14,8 @@ import { createNewSite } from '../../reducers/siteReducer'
 class SuperAdmin extends Component {
 
     static propTypes = {
-        createNewSite: PropTypes.func
+        createNewSite: PropTypes.func,
+        users: PropTypes.array
     }
 
     render(){
@@ -25,6 +26,7 @@ class SuperAdmin extends Component {
                 <section className="content">
                 <SuperAdminPage
                     createNewSite= {this.props.createNewSite}
+                    users= {this.props.users}
                 />
                 <SiteList />
                 </section>
@@ -39,6 +41,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
+    users: state.user.users
 
 })
 

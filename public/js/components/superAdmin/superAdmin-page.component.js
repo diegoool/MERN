@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 class SuperAdminPage extends Component {
     static propTypes = {
-        createNewSite: PropTypes.func
+        createNewSite: PropTypes.func,
+        users: PropTypes.array
     }
     
     constructor(props) {
@@ -15,11 +16,20 @@ class SuperAdminPage extends Component {
         event.preventDefault()
         let newSiteTitle = event.currentTarget['new-site-title'].value
         let newSiteOwnerId = event.currentTarget['new-site-owner-id'].value
-
-        this.props.createNewSite(newSiteTitle, newSiteOwnerId)
+console.log(newSiteTitle)
+console.log(newSiteOwnerId)
+        //this.props.createNewSite(newSiteTitle, newSiteOwnerId)
     }
 
     render(){
+        var siteOwners = null
+
+        if (this.props.users !== null && this.props.users.length !== 0) {
+            siteOwners = this.props.users.map((user,i) => {
+            return <option key={i} value={user._id} >{user.email}</option>
+          })
+        }
+
         return (
             <div>
                 <h4>SuperAdmin can manage all sites here.</h4>
@@ -52,12 +62,9 @@ class SuperAdminPage extends Component {
                         <tbody>
                             <tr>
                                 <td>
-                                    <input
-                                        type="text"
-                                        defaultValue='Id Owner'
-                                        id="new-site-owner-id"
-                                        className="form-control"
-                                    />
+                                    <select id='new-site-owner-id' className="form-control">
+                                        {siteOwners}
+                                    </select>
                                 </td>
                             </tr>
                         </tbody>

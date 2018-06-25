@@ -4,10 +4,10 @@ class Title extends Component {
     render(){
         return (
             <section className="content-header">
-                <h1>Settings</h1>
+                <h1>Super Admin</h1>
                 <ol className="breadcrumb">
                     <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
-                    <li className="active">Settings</li>
+                    <li className="active">Super Admin</li>
                 </ol>
             </section>
         );
