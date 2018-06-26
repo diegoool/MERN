@@ -12,6 +12,7 @@ class App extends Component {
         // Functions
         fetchUsers: PropTypes.func,
         fetchSites: PropTypes.func,
+        loadUserSite: PropTypes.func,
         getUserDetails: PropTypes.func,
 
         sites: PropTypes.array,
@@ -21,6 +22,7 @@ class App extends Component {
         this.props.fetchUsers()
         this.props.fetchSites()
         this.props.getUserDetails()
+        //this.props.loadUserSite()
     }
     
     render(){

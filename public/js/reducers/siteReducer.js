@@ -7,6 +7,7 @@ import {browserHistory} from 'react-router';
 // -----------------------------
 
 const GET_SITES = 'GET_SITES'
+const GET_USER_SITE = 'GET_USER_SITE'
 
 
 // -----------------------------
@@ -20,6 +21,13 @@ export function getSites (sites) {
   }
 }
 
+export function getUserSite (site) {
+  return {
+    type: GET_USER_SITE,
+    payload: site
+  }
+}
+
 // ----------------------------
 // Async Functions Calls
 // ----------------------------
@@ -30,6 +38,22 @@ export const fetchSites = () => {
     .then(res => res.json())
     .then(data => {
       dispatch(getSites(data))
+      dispatch(loadUserSite())
+    }
+    );
+  }
+}
+
+export const loadUserSite = () => {
+  return (dispatch, getState) => {
+    let ownerId = getState().user.user._id
+
+    let userSite = getState().site.sites.find(site => site.ownerId === ownerId)
+    
+    fetch(`/api/sites/${userSite._id}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch(getUserSite(data))
     }
     );
   }
@@ -92,6 +116,12 @@ const ACTION_HANDLERS = {
       ...state,
       sites: action.payload
     }
+  },
+  [GET_USER_SITE]: (state, action) => {
+    return {
+      ...state,
+      userSite: action.payload
+    }
   }
   // ,
   // [EDIT_PROFILE_INFO]: (state, action) => {
@@ -127,7 +157,8 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  sites: null
+  sites: null,
+  userSite: null
 }
 
 export default function siteReducer (state = initialState, action) {

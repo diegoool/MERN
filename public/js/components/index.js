@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import App from './app.component'
 import { getUserDetails, fetchUsers } from '../reducers/userReducer.js'
-import { fetchSites } from '../reducers/siteReducer.js'
+import { fetchSites, loadUserSite } from '../reducers/siteReducer.js'
 
 const mapDispatchToProps = {
     fetchSites,
+    loadUserSite,
     getUserDetails,
     fetchUsers
 }
